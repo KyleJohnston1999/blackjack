@@ -1,0 +1,14 @@
+/Users/kylejohnston/dev/blackjack/bin/Debug/net8.0/blackjack
+/Users/kylejohnston/dev/blackjack/bin/Debug/net8.0/blackjack.deps.json
+/Users/kylejohnston/dev/blackjack/bin/Debug/net8.0/blackjack.runtimeconfig.json
+/Users/kylejohnston/dev/blackjack/bin/Debug/net8.0/blackjack.dll
+/Users/kylejohnston/dev/blackjack/bin/Debug/net8.0/blackjack.pdb
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.AssemblyInfoInputs.cache
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.AssemblyInfo.cs
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.csproj.CoreCompileInputs.cache
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.dll
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/refint/blackjack.dll
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.pdb
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/blackjack.genruntimeconfig.cache
+/Users/kylejohnston/dev/blackjack/obj/Debug/net8.0/ref/blackjack.dll
