@@ -5,5 +5,6 @@ public enum CardType
     King,
     Queen,
     Jack,
-    Numeric
+    Numeric,
+    Ace
 }
