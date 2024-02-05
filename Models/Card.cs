@@ -12,4 +12,8 @@ public struct Card
     public int Value { get; set; }
     public CardType Type { get; set; }
     public CardSuit Suit { get; set; }
+
+    public string toString() {
+        return this.Suit + "-" + this.Type + "-" + this.Value;
+    }
 }

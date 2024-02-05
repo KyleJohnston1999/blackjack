@@ -9,6 +9,10 @@ public class Runner : IRunner
         Card card = CardDeck.Last();
         CardDeck.Remove(card);
         GameState.PlayerCards.Add(card);
+        if (GameState.PlayerTotal > 21) {
+            GameState.IsBust = true;
+            GameState.CurrentBid = 0;
+        }
         return GameState;
     }
 
@@ -28,16 +32,21 @@ public class Runner : IRunner
         return GameState;
     }
 
-    public GameState Stay()
+   public GameState Stay()
     {
-        // calculate the dealer hand
-        throw new NotImplementedException();
+        HitDealer();
+        // check if over or below 16 and hit again
+        while (GameState.DealerTotal <= 16) {
+            HitDealer();
+        }
+        GameState.IsStay = true;
+        return GameState;
     }
 
     public GameState Surrender()
     {
-        GameState.CurrentBid += GameState.InitialBid;
-        GameState.Done = true;
+        GameState.CurrentBid = GameState.CurrentBid / 2;
+        GameState.IsSurrender = true;
         return GameState;
     }
 
@@ -53,9 +62,9 @@ public class Runner : IRunner
             {
                 CardDeck.Add(new Card(Value, CardType.Numeric, suit));
             }
-            CardDeck.Add(new Card(10, CardType.Ace, suit));
-            CardDeck.Add(new Card(10, CardType.Ace, suit));
-            CardDeck.Add(new Card(10, CardType.Ace, suit));
+            CardDeck.Add(new Card(10, CardType.King, suit));
+            CardDeck.Add(new Card(10, CardType.Queen, suit));
+            CardDeck.Add(new Card(10, CardType.Jack, suit));
         }
 
         CardDeck.Shuffle();

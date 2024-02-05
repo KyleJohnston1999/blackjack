@@ -1,6 +1,6 @@
 ﻿namespace blackjack;
 
-public enum Moves
+public enum Move
 {
     Hit,
     Stay,
