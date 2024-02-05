@@ -26,16 +26,17 @@ public class Game
         return new Result {
             Earnings = currentState.CurrentBid,
             InitialBet = currentState.InitialBid,
-            IsVictory = IsVictory(currentState)
+            Outcome = GetOutcome(currentState)
         };
     }
 
-    public bool IsVictory(GameState gameState) {
+    public Outcome GetOutcome(GameState gameState) {
         if (gameState.IsStay) {
-            if (gameState.DealerTotal > 21) return true;
-            return gameState.PlayerTotal > gameState.DealerTotal; // TODO: add draw
+            if (gameState.DealerTotal > 21 || gameState.DealerTotal > gameState.PlayerTotal) return Outcome.Win;
+            if (gameState.DealerTotal == gameState.PlayerTotal) return Outcome.Draw;
+            return Outcome.Loss;
         }
-        return false;
+        return Outcome.Loss;
     }
 
     public GameState TakeAction(Move move) {
