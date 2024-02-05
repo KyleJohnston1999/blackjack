@@ -4,6 +4,7 @@ public class Runner : IRunner
 {
     List<Card> CardDeck = new List<Card>();
     GameState GameState = null;
+
     public GameState Hit()
     {
         Card card = CardDeck.Last();
@@ -11,8 +12,8 @@ public class Runner : IRunner
         GameState.PlayerCards.Add(card);
         if (GameState.PlayerTotal > 21) {
             GameState.IsBust = true;
-            GameState.CurrentBid = 0;
         }
+        GameState.IsDoubleDownAllowed = false;
         return GameState;
     }
 
@@ -29,6 +30,7 @@ public class Runner : IRunner
         Hit();
         Hit();
         HitDealer();
+        GameState.IsDoubleDownAllowed = true;
         return GameState;
     }
 
@@ -45,7 +47,6 @@ public class Runner : IRunner
 
     public GameState Surrender()
     {
-        GameState.CurrentBid = GameState.CurrentBid / 2;
         GameState.IsSurrender = true;
         return GameState;
     }
@@ -68,5 +69,14 @@ public class Runner : IRunner
         }
 
         CardDeck.Shuffle();
+    }
+
+    public GameState DoubleDown()
+    {
+        if (GameState.IsDoubleDownAllowed) {
+            GameState.CurrentBid *= 2;
+        }
+        Hit();
+        return GameState;
     }
 }

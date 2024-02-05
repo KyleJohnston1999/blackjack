@@ -2,7 +2,7 @@
 
 namespace blackjack;
 
-public class Game
+public class Game : IGame
 {
     private readonly IRunner runner;
     private readonly IStrategy strategy;
@@ -23,14 +23,32 @@ public class Game
             currentState = TakeAction(nextMove);           
         }
 
+        var Outcome = CalculateOutcome(currentState);
+
+
         return new Result {
-            Earnings = currentState.CurrentBid,
+            Earnings = CalculateEarnings(currentState, Outcome),
             InitialBet = currentState.InitialBid,
-            Outcome = GetOutcome(currentState)
+            Outcome = Outcome
         };
     }
 
-    public Outcome GetOutcome(GameState gameState) {
+    public decimal CalculateEarnings(GameState gameState, Outcome outcome) {
+        switch (outcome) {
+            case Outcome.Win:
+                if (gameState.PlayerTotal == 21) {
+                    return gameState.CurrentBid * 1.5m;
+                }
+                return gameState.CurrentBid;
+            case Outcome.Loss:
+                if (gameState.IsSurrender) return -0.5m * gameState.CurrentBid;
+                return -1 * gameState.CurrentBid;
+            default:
+                return 0;
+        }
+    }
+
+    public Outcome CalculateOutcome(GameState gameState) {
         if (gameState.IsStay) {
             if (gameState.DealerTotal > 21 || gameState.DealerTotal > gameState.PlayerTotal) return Outcome.Win;
             if (gameState.DealerTotal == gameState.PlayerTotal) return Outcome.Draw;

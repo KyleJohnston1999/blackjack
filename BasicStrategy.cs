@@ -2,7 +2,7 @@
 
 namespace blackjack;
 
-public class Strategy : IStrategy
+public class BasicStrategy : IStrategy
 {
     public Move GetMove(GameState gameState)
     {
