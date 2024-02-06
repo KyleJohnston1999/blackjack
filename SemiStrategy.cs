@@ -8,7 +8,6 @@ namespace blackjack
 {
     public class SemiStrategy : IStrategy
     {
-
         public Move GetMove(GameState gameState)
         {
             int playerScore = gameState.PlayerCards.Aggregate(0, (sum, next) => sum + next.Value);
