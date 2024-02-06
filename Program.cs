@@ -50,7 +50,6 @@ class Program
 
         } while (pressedKey != ConsoleKey.Enter);
         return Strategies[selectedLineIndex];
-        // Console.WriteLine($"{} was chosen as an option");  
     }
 
     static void UpdateMenu(int index)
